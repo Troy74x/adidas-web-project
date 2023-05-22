@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body{
+    background: linear-gradient(#111,#222); /*2 mixed colors*/
+    height: 100vh; /*for all the screen not just the content*/
+    width: 100%;
+
+    /*making glass container cetered*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body::after{/*making the circle*/
+    content: '';
+    width: 100%; /*of body*/
+    height: 100%;
+    background: red;
+    position: absolute;
+    z-index : -1; /*making the circle under the glass container*/
+    clip-path:circle(40% at right 70%);
+}
+.container{
+    width: 80%;  /*80% of screen*/
+    height: 80%; /*80% of screen*/
+    background: rgba(255,255,255,0.1) ;
+    border-radius: 20px; /*making container tip curved*/
+    overflow: hidden; /*if any thing gets out the glass container hide it*/
+}
+
+nav{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; /*making bar and logo centered on the same line*/
+    width :80%;
+    margin: auto;
+    padding: 20px 0;/*20 px n,s 0px e,w*/
+}
+
+nav .logo{/*adidas*/
+    color: #ffff;
+    text-decoration: none;/*removes the line under the word*/
+    font-size: 32px;
+    text-transform: uppercase;/*capital letters*/
+    letter-spacing: 3px;/*space between each letter*/
+    font-weight: 700;
+}
+
+nav ul li{
+    display: inline-block;
+    margin: 0 6px;/* 0 n,s 6 s,e*/
+}
+
+nav ul li a{
+    color: #ffff;
+    text-decoration: none;/*removes the line under the word*/
+    font-size: 18px;
+    font-weight: 500;
+}
+
+nav ul li a:hover{/*when the cursor is on any word it will turn to red*/
+    color: #e80202;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;/*space between text and image*/
+    align-items: center;/*text and image are cntered*/
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+.content .text{
+    color:#ffff;
+    width: 40%;
+}
+
+.content .text h2{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.content .text p{
+    font-size: 18px;
+    line-height: 25px;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+
+.content .image{
+    width: 40%;
+}
+.content .image img{
+    width: 400px;  
+}
+/*making website responsive with for any screen*/
+
+@media (min-width:950px) and (max-width:1150px){
+    .content .image img{
+        width: 330px;
+    } 
+}
+
+@media (max-width:950px){
+    .content, nav{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .content .image, .content .text{
+        width: 80%;
+    }
+    body::after{
+        clip-path: circle(50% at bottom);
+    }
+}
